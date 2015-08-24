@@ -1,0 +1,14 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Date:</strong>
+  <%= @data_point.date %>
+</p>
+
+<p>
+  <strong>Consumption:</strong>
+  <%= @data_point.consumption %>
+</p>
+
+<%= link_to 'Edit', edit_data_point_path(@data_point) %> |
+<%= link_to 'Back', data_points_path %>
