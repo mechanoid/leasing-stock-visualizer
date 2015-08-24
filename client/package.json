@@ -9,6 +9,9 @@
   "author": "Falk Hoppe <falkhoppe81@gmail.com>",
   "license": "MIT",
   "dependencies": {
-    "angular": "^1.4.4"
+    "angular": "^1.4.4",
+    "gulp": "^3.9.0",
+    "gulp-concat": "^2.6.0",
+    "gulp-util": "^3.0.6"
   }
 }
