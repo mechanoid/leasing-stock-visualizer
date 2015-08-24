@@ -1,4 +1,6 @@
 /*jslint white: true*/
 /*global angular*/
 
-angular.module('LeasingStockClient', []);
+angular.module('leasingStockApp', [
+  'stockTable'
+]);
