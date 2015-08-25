@@ -2,5 +2,6 @@
 /*global angular*/
 
 angular.module('leasingStockApp', [
-  'stockTable'
+  'ngMock'
+  , 'stockTable'
 ]);

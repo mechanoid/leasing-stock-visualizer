@@ -12,14 +12,15 @@ module.exports = function(config) {
 
     // frameworks to use
     // available frameworks: https://npmjs.org/browse/keyword/karma-adapter
-    frameworks: ['qunit'],
+    frameworks: ['jasmine'],
 
-    plugins: ['karma-qunit', 'karma-phantomjs-launcher'],
+    plugins: ['karma-jasmine', 'karma-phantomjs-launcher'],
 
 
     // list of files / patterns to load in the browser
     files: [
       'node_modules/angular/angular.min.js'
+      , 'node_modules/angular-mocks/angular-mocks.js'
       , 'dist/**/*.js'
     ],
 
