@@ -8,6 +8,8 @@ angular.module('stockItemForm', ['leasingStock'])
   $scope.addItem = function(item) {
     items.addItem(item).then(function() {
       $rootScope.$broadcast('item.created', item);
+
+      $scope.item = null;
     });
   };
 }]);
