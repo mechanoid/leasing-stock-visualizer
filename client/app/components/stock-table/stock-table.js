@@ -11,6 +11,6 @@ angular.module('stockTable', ['leasingStock'])
   });
 
   $rootScope.$on('item.created', function(_, item) {
-    $scope.items.push(item);
+    $scope.items.push(angular.copy(item));
   });
 }]);

@@ -44,4 +44,18 @@ describe('StockTableController', function(){
     $rootScope.$broadcast('item.created', 2);
     expect(scope.items.length).toBe(2);
   }));
+
+  it('should add two items if it two items are added', inject(function($rootScope) {
+    allController();
+    deferred.resolve([1]);
+    scope.$digest();
+
+    expect(scope.items.length).toBe(1);
+
+    $rootScope.$broadcast('item.created', 2);
+    expect(scope.items.length).toBe(2);
+
+    $rootScope.$broadcast('item.created', 3);
+    expect(scope.items.length).toBe(3);
+  }));
 });
