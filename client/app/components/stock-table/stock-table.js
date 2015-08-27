@@ -1,4 +1,4 @@
-/*jslint white: true */
+/*jslint white: true, devel: true, nomen: true */
 /*global angular*/
 
 angular.module('stockTable', ['leasingStock'])
@@ -7,7 +7,7 @@ angular.module('stockTable', ['leasingStock'])
 
   items.all().then(function(items) {
     $scope.items = items;
-    $rootScope.$broadcast('items.queried')
+    $rootScope.$broadcast('items.queried');
   });
 
   $rootScope.$on('item.created', function(_, item) {
