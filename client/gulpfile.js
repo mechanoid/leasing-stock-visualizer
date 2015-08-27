@@ -12,10 +12,17 @@
 
       // path variables
       , path = (function(self){
-        self.scripts = [self.app + '/app.js', self.app + 'components/**/!(*-test).js'];
-        self.tests = self.app + 'components/**/*-test.js';
-        return self;
-      }({app: './app/', dist: './dist/'}))
+          self.scripts = [self.app + 'components/**/!(*-test).js', self.app + '/app.js'];
+
+          self.angularScripts = [
+              self.node_modules + 'angular/angular.min.js'
+            , self.node_modules + '/angular-resource/angular-resource.min.js'
+          ];
+
+          self.tests = self.app + 'components/**/*-test.js';
+
+          return self;
+      }({app: './app/', dist: './dist/', node_modules: './node_modules/'}))
 
       ;
 
@@ -23,6 +30,13 @@
     gulp
       .src(path.scripts)
       .pipe(concat('application.js').on('error', gutil.log))
+      .pipe(gulp.dest(path.dist));
+  });
+
+  gulp.task('angular-stack', function() {
+    gulp
+      .src(path.angularScripts)
+      .pipe(concat('angular-stack.js').on('error', gutil.log))
       .pipe(gulp.dest(path.dist));
   });
 
@@ -40,10 +54,17 @@
     }, done).start();
   });
 
-  gulp.task('watch', ['javascript'], function() {
+  gulp.task('tdd', function (done) {
+    new Server({
+      configFile: __dirname + '/karma.conf.js',
+      singleRun: false
+    }, done).start();
+  });
+
+  gulp.task('watch', ['angular-stack', 'javascript'], function() {
     gulp.watch(path.scripts, ['javascript']);
     gulp.watch(path.tests, ['javascript-tests']);
   });
 
-  gulp.task('default', ['javascript', 'javascript-tests']);
+  gulp.task('default', ['javascript', 'javascript-tests', 'angular-stack']);
 }());

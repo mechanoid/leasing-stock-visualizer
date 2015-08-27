@@ -2,5 +2,7 @@
 /*global angular*/
 
 angular.module('leasingStockApp', [
-  'stockTable'
+  'ngResource'
+  , 'stockTable'
+  , 'stockItemForm'
 ]);

@@ -6,6 +6,14 @@
 </head>
 <body>
 
+  <div data-ng-controller="StockItemFormCtrl">
+    <form>
+      <input type="date" ng-model="item.date" required="required" />
+      <input type="text" ng-model="item.consumption" required="required" />
+      <input type="submit" data-ng-click="addItem(item)">
+    </form>
+  </div>
+
   <div data-ng-controller="StockTableCtrl">
     <table>
       <tr>
@@ -13,13 +21,13 @@
         <th>Consumption</th>
       </tr>
       <tr ng-repeat="item in items">
-        <td>{{item.date}}</td>
-        <td>{{item.consumption}}</td>
+        <td>{{item.date | date:'yyyy-mm-dd'}}</td>
+        <td style="text-align: right;">{{item.consumption}} km</td>
       </tr>
     </table>
   </div>
 
-  <script src="node_modules/angular/angular.min.js"></script>
+  <script src="dist/angular-stack.js"></script>
   <script src="dist/application.js"></script>
 </body>
 </html>

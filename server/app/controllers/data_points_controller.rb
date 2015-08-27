@@ -69,6 +69,10 @@ class DataPointsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def data_point_params
+
+      logger.debug("**************************************************")
+      logger.debug(params)
+      logger.debug("**************************************************")
       params.require(:data_point).permit(:date, :consumption)
     end
 end
