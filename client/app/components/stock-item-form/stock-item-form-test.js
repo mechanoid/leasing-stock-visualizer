@@ -37,4 +37,12 @@ describe('StockItemFormController', function(){
     expect($rootScope.$broadcast).toHaveBeenCalledWith("item.created", "item_1");
   }));
 
+  it('should reset item after adding an item', inject(function($rootScope) {
+    addItemController();
+    scope.addItem("item_1");
+    deferred.resolve();
+    scope.$digest();
+    expect(scope.item).toBe(null);
+  }));
+
 });
